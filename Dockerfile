@@ -6,7 +6,8 @@ ARG PHALCON_EXT_PATH=php7/64bits
 
 RUN apt update && apt install -y \
     git \
-    curl
+    curl \
+    zip
 
 # Phalcon install
 RUN set -xe && \
