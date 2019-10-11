@@ -5,3 +5,4 @@
 * Пример запуска тестов и покрытия
 * Работу с функциями password_hash и password_verify вынести в хелер
 * Попробовать phalcon 4
+* Разобраться с именованием неймспейсов, следовать PSR - https://www.php-fig.org/psr/psr-1/#3-namespace-and-class-names
