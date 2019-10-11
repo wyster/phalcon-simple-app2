@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f7ef29289e828744aa57999a061d3098",
+    "content-hash": "13c2c0f1b905e313d04e7c0000394399",
     "packages": [
         {
             "name": "datto/json-rpc",
@@ -2550,6 +2550,10 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=7.2",
+        "ext-phalcon": "~3.0",
+        "ext-json": "*"
+    },
     "platform-dev": []
 }
