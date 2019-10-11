@@ -25,7 +25,7 @@ class User extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSource("user");
+        $this->setSource('user');
     }
 
     /**
