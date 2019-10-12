@@ -14,6 +14,6 @@ unit-test:
 	&& ./vendor/bin/phpunit \
 	&& rm -f ./data/test.db ./.phalcon/migration-version \
 
-coverage:
+coverage: unit-test
 	php coverage-checker.php ./data/clover.xml 100
 
