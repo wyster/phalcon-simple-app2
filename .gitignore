@@ -1,4 +1,2 @@
-*.db
 vendor
-.phalcon
 *.cache
