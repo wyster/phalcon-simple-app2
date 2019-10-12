@@ -2,7 +2,6 @@
 
 use Phalcon\Db\Column;
 use Phalcon\Db\Index;
-use Phalcon\Db\Reference;
 use Phalcon\Mvc\Model\Migration;
 
 /**
@@ -72,7 +71,7 @@ class UserMigration_100 extends Migration
             'user',
             [
                 'admin',
-                password_hash('admin', PASSWORD_DEFAULT),
+                \app\Helper\Password::create('admin'),
             ],
             [
                 'login',

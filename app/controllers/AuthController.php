@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\Helper\Password;
 use app\models\User;
 use Datto\JsonRpc\Exceptions\ApplicationException;
 use Phalcon\Mvc\Controller;
@@ -20,7 +21,7 @@ class AuthController extends Controller
             throw new ApplicationException('Invalid login or password', 1);
         }
 
-        if (!password_verify($password, $row->getPassword())) {
+        if (!Password::verify($password, $row->getPassword())) {
             throw new ApplicationException('Invalid login or password', 1);
         }
 
