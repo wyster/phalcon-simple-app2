@@ -15,7 +15,7 @@ include ROOT_PATH . '/../vendor/autoload.php';
 
 $loader = new Loader();
 
-include ROOT_PATH . '/../app/config/config.php';
+include ROOT_PATH . '/../app/config/config.testing.php';
 
 $loader->register();
 

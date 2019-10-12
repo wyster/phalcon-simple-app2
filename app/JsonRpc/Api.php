@@ -35,7 +35,8 @@ class Api implements Evaluator
         try {
             $this->getDispatcher()->dispatch();
         } catch (\Throwable $e) {
-            error_log($e->__toString());
+            // @todo only for debug mode
+            //error_log($e->__toString());
             throw new ApplicationException($e->getMessage(), $e->getCode());
         }
         return $this->getDispatcher()->getReturnedValue();

@@ -6,9 +6,6 @@ use app\test\UnitTestCase;
 use Datto\JsonRpc\Exceptions\ApplicationException;
 use Mockery;
 
-/**
- * Class UnitTest
- */
 class AuthControllerTest extends UnitTestCase
 {
     public function setUp(): void

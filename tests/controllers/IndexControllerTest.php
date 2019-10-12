@@ -2,12 +2,8 @@
 
 namespace app\test\controllers;
 
-use Phalcon\Mvc\View;
 use app\test\UnitTestCase;
 
-/**
- * Class UnitTest
- */
 class IndexControllerTest extends UnitTestCase
 {
     public function setUp(): void

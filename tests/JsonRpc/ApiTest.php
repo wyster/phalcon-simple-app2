@@ -9,11 +9,6 @@ use ReflectionMethod;
 
 class ApiTest extends UnitTestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-    }
-
     public function testEvaluate(): void
     {
         $dispatcherMock = $this->getMockBuilder(\Phalcon\DispatcherInterface::class)
@@ -31,6 +26,26 @@ class ApiTest extends UnitTestCase
         $dispatcherMock->method('getReturnedValue')->willReturn([]);
         $result = $api->evaluate('controller.action', $args);
         $this->assertSame([], $result);
+    }
+
+    public function testEvaluateException(): void
+    {
+        $this->expectException(ApplicationException::class);
+        $this->expectExceptionMessage('invalid call');
+        $dispatcherMock = $this->getMockBuilder(\Phalcon\DispatcherInterface::class)
+            ->getMockForAbstractClass();
+        $api = $this->getMockBuilder(Api::class)
+            ->setConstructorArgs([
+                $dispatcherMock
+            ])
+            ->setMethodsExcept(['evaluate'])
+            ->getMock();
+        $args = ['login' => 'user', 'password' => '12345'];
+        $dispatcherMock->expects($this->once())->method('forward');
+        $dispatcherMock->expects($this->once())->method('setParams')->with($args);
+        $dispatcherMock->expects($this->once())->method('dispatch')->will($this->throwException(new ApplicationException('invalid call', 1)));
+        $dispatcherMock->method('getReturnedValue')->willReturn([]);
+        $api->evaluate('controller.action', $args);
     }
 
     public function testValidateControllerAndAction(): void

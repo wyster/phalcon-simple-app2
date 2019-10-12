@@ -2,7 +2,6 @@
 
 namespace app\test;
 
-use Phalcon\Di;
 use Phalcon\Test\UnitTestCase as PhalconTestCase;
 use PHPUnit\Framework\IncompleteTestError;
 
@@ -17,8 +16,9 @@ abstract class UnitTestCase extends PhalconTestCase
     {
         parent::setUp();
 
-        // Load any additional services that might be required during testing
-        $di = Di::getDefault();
+        global $di;
+
+        \Phalcon\Di::setDefault($di);
 
         // Get any DI components here. If you have a config, be sure to pass it to the parent
 
