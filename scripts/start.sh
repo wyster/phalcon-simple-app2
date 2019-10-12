@@ -4,7 +4,7 @@ echo 'Run start.sh'
 composer global require hirak/prestissimo
 composer install
 
-./vendor/bin/phalcon migration run
+./vendor/bin/phalcon migration run --log-in-db
 
 # Enable xdebug
 XdebugFile='/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini'

@@ -9,11 +9,11 @@ help:
 
 unit-test:
 	@composer install \
-	&& mv -f ./.phalcon/migration-version ./.phalcon/migration-version-tmp \
+	&& mv ./.phalcon/migration-version ./.phalcon/migration-version-tmp 2>/dev/null \
 	&& rm -f ./data/test.db \
 	&& ./vendor/bin/phalcon migration run --config=./app/config/config.testing.php \
 	&& ./vendor/bin/phpunit \
-	&& mv ./.phalcon/migration-version-tmp ./.phalcon/migration-version
+	&& mv ./.phalcon/migration-version-tmp ./.phalcon/migration-version 2>/dev/null
 
 coverage:
 	php coverage-checker.php ./data/clover.xml 100
