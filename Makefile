@@ -8,12 +8,8 @@ help:
 
 
 unit-test:
-	@composer install \
-	&& rm -f ./data/test.db ./.phalcon/migration-version \
-	&& ./vendor/bin/phalcon migration run --config=./app/config/config.testing.php \
-	&& php ./vendor/bin/phpunit \
-	&& rm -f ./data/test.db ./.phalcon/migration-version \
+	@docker run -it --rm -v `pwd`:`pwd` -w `pwd` -v /var/run/docker.sock:/var/run/docker.sock phalcon-simple-app ./vendor/bin/phpunit
 
 coverage: unit-test
-	php coverage-checker.php ./data/clover.xml 100
+	@docker run -it --rm -v `pwd`:`pwd` -w `pwd` -v /var/run/docker.sock:/var/run/docker.sock phalcon-simple-app php coverage-checker.php ./data/clover.xml 100
 
