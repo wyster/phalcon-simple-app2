@@ -9,3 +9,4 @@
 * Travis CI
 * Coveralls
 * Grumphp
+* Конфигурацию БД вынести в env
