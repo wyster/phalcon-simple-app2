@@ -1,12 +1,13 @@
 **Запуск контейнера**
 
-1. Сборка командой
+1. Настройка, запустить `make setup`, при желании сконфигурировать коннект к базе данных в .env
+2. Сборка командой
  
 `$ docker image build -t phalcon-simple-app2 .`
 
-2. Запуск 
+3. Запуск 
 
-`$ docker container run -e USE_PHP_INTERNAL_SERVER=1 -e ENABLE_XDEBUG --publish 80:80 -v $(pwd):/var/www/html phalcon-simple-app2`
+`$ docker container run --env-file ./.env --publish 80:80 -v $(pwd):/var/www/html phalcon-simple-app2`
 
 В `--publish` можно передать желаемый порт, например 8080 `--publish 8080:80`
 
