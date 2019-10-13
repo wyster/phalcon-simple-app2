@@ -2,11 +2,11 @@
 
 1. Сборка командой
  
-`$ docker image build -t phalcon-simple-app .`
+`$ docker image build -t phalcon-simple-app2 .`
 
 2. Запуск 
 
-`$ docker container run --env USE_PHP_INTERNAL_SERVER=1 -v $(pwd):/var/www/html phalcon-simple-app`
+`$ docker container run --env USE_PHP_INTERNAL_SERVER=1 -v $(pwd):/var/www/html phalcon-simple-app2`
 
 В `--publish` можно передать желаемый порт, например `--publish 8080:80`
 
@@ -14,7 +14,7 @@
 
 **Остановка контейнера**
 
-`$ docker container stop $(docker container ls -q --filter="ancestor=phalcon-simple-app")`
+`$ docker container stop $(docker container ls -q --filter="ancestor=phalcon-simple-app2")`
 
 **Пример запроса через curl**
 ```
