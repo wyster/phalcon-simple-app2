@@ -5,12 +5,12 @@ help:
 	@echo "usage: make COMMAND"
 	@echo ""
 	@echo "Commands:"
-	@echo "  setup                    Default setting for simple run"
+	@echo "  setup                    Setup default settings for simple run"
 	@echo "  unit-test                Run unit tests"
 	@echo "  coverage                 Show code coverage"
 
 setup:
-	@bash -c "cp -n ./.env.example $(env-file)"
+	@bash -c "cp -n ./.env.example ./.env"
 
 unit-test:
 	[ ! -f $(env-file) ] && echo "Env file not found" && exit 1 || \
