@@ -8,7 +8,7 @@
 
 3. Запуск 
 
-`$ docker container run --env-file ./.env --publish 80:80 -v $(pwd):/var/www/html phalcon-simple-app2`
+`$ docker container run -t --env-file ./.env --publish 80:80 -v $(pwd):/var/www/html phalcon-simple-app2`
 
 В `--publish` можно передать желаемый порт, например 8080 `--publish 8080:80`
 
