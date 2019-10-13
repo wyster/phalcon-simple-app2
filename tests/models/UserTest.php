@@ -47,7 +47,8 @@ class UserTest extends UnitTestCase
     {
         $this->expectException(TypeError::class);
         // Может разниться от версии к версии php, например в 7.2 тип int будет integer
-        $this->expectExceptionMessageRegExp('/Return value of app\models\User::getId() must be of the type int(eger)?, string returned/');
+        $regexp = '/Return value of ' . preg_quote(User::class . '::getId()'). ' must be of the type int, string returned/';
+        $this->expectExceptionMessageRegExp($regexp);
         $value = '1';
         $expected = 1;
         $this->model->writeAttribute('id', $value);

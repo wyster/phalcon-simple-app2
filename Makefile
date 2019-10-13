@@ -11,7 +11,7 @@ unit-test:
 	@composer install \
 	&& rm -f ./data/test.db ./.phalcon/migration-version \
 	&& ./vendor/bin/phalcon migration run --config=./app/config/config.testing.php \
-	&& ./vendor/bin/phpunit \
+	&& php ./vendor/bin/phpunit \
 	&& rm -f ./data/test.db ./.phalcon/migration-version \
 
 coverage: unit-test
