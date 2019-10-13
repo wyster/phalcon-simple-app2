@@ -22,7 +22,7 @@ RUN set -xe && \
             /tmp/cphalcon-${PHALCON_VERSION}
 
 # XDebug
-RUN pecl install xdebug && docker-php-ext-enable xdebug
+RUN pecl install xdebug
 
 # Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
