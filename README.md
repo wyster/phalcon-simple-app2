@@ -13,6 +13,7 @@
 С флагом `-d` можно запустить в `detached mode`
 
 **Остановка контейнера**
+
 `$ docker container stop $(docker container ls -q --filter="ancestor=phalcon-simple-app")`
 
 **Пример запроса через curl**
