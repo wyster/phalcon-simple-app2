@@ -4,15 +4,13 @@
 
 2. Сборка командой
  
-`$ docker image build -t phalcon-simple-app2 .`
+`$ make build`
 
 3. Запуск 
 
-`$ docker container run -t --env-file ./.env --publish 80:80 -v $(pwd):/var/www/html phalcon-simple-app2`
+`$ make run`
 
-В `--publish` можно передать желаемый порт, например 8080 `--publish 8080:80`
-
-С флагом `-d` можно запустить в `detached mode`
+В `port` можно передать желаемый порт, например 8080 `port 8080`
 
 3. Сайт доступен на выбранном вами порту, по умолчанию на 80: `http://localhost/`
 
@@ -20,12 +18,12 @@
 
 **Остановка контейнера**
 
-`$ docker container stop $(docker container ls -q --filter="ancestor=phalcon-simple-app2")`
+`$ make stop`
 
 **Пример запроса через curl**
 ```
 $ curl -X POST \
-    http://localhost/ \
+    http://localhost:8082/ \
     -d '{"jsonrpc":"2.0", "id":1, "method":"auth.index", "params": {"login":"admin", "password":"admin"}}'
 ```
 

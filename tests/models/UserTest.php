@@ -3,7 +3,6 @@
 namespace app\models;
 
 use app\test\UnitTestCase;
-use TypeError;
 
 class UserTest extends UnitTestCase
 {
@@ -24,6 +23,10 @@ class UserTest extends UnitTestCase
             [
                 '1',
                 1
+            ],
+            [
+                '01000',
+                1000
             ]
         ];
     }
@@ -38,24 +41,10 @@ class UserTest extends UnitTestCase
     {
         $this->model->id = $value;
         $this->assertSame($expected, $this->model->id);
-    }
 
-    /**
-     * При вызове writeAttribute не вызывает методы set, не приводит к типам, из-за чего на выходе исключение...
-     */
-    public function testGetAttributeException(): void
-    {
-        $this->expectException(TypeError::class);
-        // Может разниться от версии к версии php, например в 7.2 тип int будет integer
-        $regexp = '/Return value of ' . preg_quote(User::class . '::getId()'). ' must be of the type int, string returned/';
-        $this->expectExceptionMessageRegExp($regexp);
-        $value = '1';
-        $expected = 1;
         $this->model->writeAttribute('id', $value);
         $this->assertNotSame($expected, $value);
-        $this->assertSame($value, $value);
-
-        $this->model->getId();
+        $this->assertSame($expected, $this->model->getId());
     }
 
     public function testSetAndGetIdMethods(): void

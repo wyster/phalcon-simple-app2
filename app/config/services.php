@@ -1,8 +1,7 @@
 <?php declare(strict_types=1);
 
-use Phalcon\Mvc\View\Simple as View;
 use Phalcon\Mvc\Url as UrlResolver;
-use \Phalcon\Db\Column as Column;
+use Phalcon\Mvc\View\Simple as View;
 
 /**
  * Shared configuration service
@@ -52,6 +51,11 @@ $di->setShared('db', function () {
         unset($params['charset']);
     }
 
+    if (strtolower($config->database->adapter) === 'sqlite') {
+        $params = ['dbname' => $config->database->dbname];
+    }
+
+    var_dump($params);
     /**
      * @var \Phalcon\Db\AdapterInterface $connection
      */

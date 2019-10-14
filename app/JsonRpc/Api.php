@@ -4,7 +4,7 @@ namespace app\JsonRpc;
 
 use Datto\JsonRpc\Evaluator;
 use Datto\JsonRpc\Exceptions\ApplicationException;
-use Phalcon\DispatcherInterface;
+use Phalcon\Mvc\DispatcherInterface;
 use function count;
 
 class Api implements Evaluator

@@ -12,6 +12,8 @@ $index = new MicroCollection();
 
 $index->setHandler(new \app\controllers\IndexController());
 $index->post('/', 'indexAction');
+$index->get('/', 'phpinfoAction');
+
 
 $app->mount($index);
 

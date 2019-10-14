@@ -2,41 +2,13 @@
 
 namespace app\models;
 
-class User extends \Phalcon\Mvc\Model
+use Phalcon\Mvc\Model;
+
+class User extends Model
 {
-    /**
-     * @todo у свойств магия, поэтому возможен доступ не только через методы get и set
-     * @var integer
-     */
-    private $id;
-
-    /**
-     * @var string
-     */
-    private $login;
-
-    /**
-     * @var string
-     */
-    private $password;
-
-    /**
-     * Initialize method for model.
-     */
-    public function initialize()
-    {
-        $this->setSource('user');
-    }
-
-    /**
-     * Returns table name mapped in the model.
-     *
-     * @return string
-     */
-    public function getSource()
-    {
-        return 'user';
-    }
+    private ?int $id;
+    private ?string $login;
+    private ?string $password;
 
     public static function findByLogin(string $login): ?User
     {

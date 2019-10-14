@@ -40,6 +40,8 @@ try {
      */
     $app = new Micro($di);
 
+    $request = new Phalcon\Http\Request();
+
     /**
      * Include Application
      */
@@ -48,7 +50,7 @@ try {
     /**
      * Handle the request
      */
-    $app->handle();
+    $app->handle($request->getURI());
 } catch (\Exception $e) {
     echo $e->getMessage() . '<br>';
     echo '<pre>' . $e->getTraceAsString() . '</pre>';

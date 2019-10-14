@@ -9,6 +9,9 @@ RUN apt update && apt install -y \
     curl \
     zip
 
+# PSR
+RUN pecl install psr && docker-php-ext-enable psr
+
 # Phalcon install
 RUN set -xe && \
         cd /tmp && \
@@ -22,7 +25,7 @@ RUN set -xe && \
             /tmp/cphalcon-${PHALCON_VERSION}
 
 # XDebug
-RUN pecl install xdebug
+RUN pecl install xdebug-2.8.0beta2
 
 # Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer

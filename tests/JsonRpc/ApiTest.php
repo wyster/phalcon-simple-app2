@@ -5,13 +5,14 @@ namespace app\test\JsonRpc;
 use app\JsonRpc\Api;
 use app\test\UnitTestCase;
 use Datto\JsonRpc\Exceptions\ApplicationException;
+use Phalcon\Mvc\DispatcherInterface;
 use ReflectionMethod;
 
 class ApiTest extends UnitTestCase
 {
     public function testEvaluate(): void
     {
-        $dispatcherMock = $this->getMockBuilder(\Phalcon\DispatcherInterface::class)
+        $dispatcherMock = $this->getMockBuilder(DispatcherInterface::class)
             ->getMockForAbstractClass();
         $api = $this->getMockBuilder(Api::class)
             ->setConstructorArgs([
@@ -32,7 +33,7 @@ class ApiTest extends UnitTestCase
     {
         $this->expectException(ApplicationException::class);
         $this->expectExceptionMessage('invalid call');
-        $dispatcherMock = $this->getMockBuilder(\Phalcon\DispatcherInterface::class)
+        $dispatcherMock = $this->getMockBuilder(DispatcherInterface::class)
             ->getMockForAbstractClass();
         $api = $this->getMockBuilder(Api::class)
             ->setConstructorArgs([

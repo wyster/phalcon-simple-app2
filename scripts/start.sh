@@ -2,7 +2,7 @@
 echo 'Run start.sh'
 
 composer global require hirak/prestissimo
-composer install
+composer install --ignore-platform-reqs
 
 ./vendor/bin/phalcon migration run --log-in-db
 

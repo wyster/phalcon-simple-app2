@@ -1,7 +1,7 @@
 {
   "require": {
-    "php": ">=7.2",
-    "ext-phalcon": "~3.0",
+    "php": ">=7.4",
+    "ext-phalcon": "~4.0",
     "ext-json": "*",
     "datto/json-rpc": "^6.0"
   },
@@ -9,7 +9,7 @@
     "phalcon/ide-stubs": "^3.4",
     "phalcon/devtools": "^3.4",
     "mockery/mockery": "^1.2",
-    "phpunit/phpunit": "7",
+    "phpunit/phpunit": "^8",
     "phalcon/incubator": "^3.4"
   },
   "autoload": {
