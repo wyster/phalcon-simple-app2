@@ -1,22 +1,20 @@
 **Запуск контейнера**
 
-* Настройка, запустить `make setup`, при желании сконфигурировать коннект к базе данных в .env
+- Настройка, запустить `make setup`, при желании сконфигурировать коннект к базе данных в .env
 
-* Сборка командой
+- Сборка командой
  
-`$ docker image build -t phalcon-simple-app2 .`
+  `$ docker image build -t phalcon-simple-app2 .`
 
-* Запуск 
+- Запуск 
 
-`$ docker container run -t --env-file ./.env --publish 80:80 -v $(pwd):/var/www/html phalcon-simple-app2`
+  `$ docker container run -t --env-file ./.env --publish 80:80 -v $(pwd):/var/www/html phalcon-simple-app2`
 
-В `--publish` можно передать желаемый порт, например 8080 `--publish 8080:80`
+    В `--publish` можно передать желаемый порт, например 8080 `--publish 8080:80`
 
-С флагом `-d` можно запустить в `detached mode`
+    С флагом `-d` можно запустить в `detached mode`
 
-* Сайт доступен на выбранном вами порту, по умолчанию на 80: `http://localhost/`
-
-С флагом `-d` можно запустить в `detached mode`
+- Сайт доступен на выбранном вами порту, по умолчанию на 80: `http://localhost/`
 
 **Остановка контейнера**
 
