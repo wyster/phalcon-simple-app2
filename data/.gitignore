@@ -1,2 +1,4 @@
 *
 !.gitignore
+!test.db
+!sqlite.db

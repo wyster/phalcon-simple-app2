@@ -111,16 +111,6 @@ class UserTest extends UnitTestCase
     {
         $login = 'admin';
 
-        $this->di->set('db', function () {
-            $params = [
-                'dbname' => BASE_PATH . '/data/test.db'
-            ];
-
-            $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($params);
-
-            return $connection;
-        });
-
         $this->assertInstanceOf(User::class, $this->model->findByLogin($login));
         $this->assertNull($this->model->findByLogin('nobody'));
 

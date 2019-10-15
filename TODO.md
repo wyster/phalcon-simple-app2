@@ -11,4 +11,4 @@
 * Coveralls
 * Grumphp
 * ~~Конфигурацию БД вынести в env~~
-* В Phalcon 4 предлагают [выпилить миграции](https://github.com/phalcon/phalcon-devtools/issues/1278)
+* В Devtools для Phalcon 4 предлагают [выпилить миграции](https://github.com/phalcon/phalcon-devtools/issues/1278)

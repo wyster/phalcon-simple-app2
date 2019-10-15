@@ -55,7 +55,6 @@ $di->setShared('db', function () {
         $params = ['dbname' => $config->database->dbname];
     }
 
-    var_dump($params);
     /**
      * @var \Phalcon\Db\AdapterInterface $connection
      */

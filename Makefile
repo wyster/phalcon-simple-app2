@@ -21,7 +21,7 @@ unit-test:
 	[ ! -f $(env-file) ] && echo "Env file not found" && exit 1 || \
 	docker run --env-file $(env-file) -it --rm -v `pwd`:`pwd` -w `pwd` $(container-name) /bin/bash -c " \
 		docker-php-ext-enable xdebug && \
-		rm -f ./data/test.db ./data/clover.xml && \
+		rm -f ./data/clover.xml && \
 		php --version && \
 		./vendor/bin/phpunit" \
 
@@ -40,6 +40,6 @@ run:
 	@docker container run -t --env-file ./.env --publish $(port):80 -v `pwd`:/var/www/html $(container-name)
 
 stop:
-	@docker container stop $(docker container ls -q --filter="$(container-name)")
+	@docker container stop $(docker container ls -q --filter="phalcon-simple-app2-php74-phalcon4")
 
 

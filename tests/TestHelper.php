@@ -13,13 +13,39 @@ define('ROOT_PATH', __DIR__);
 
 include ROOT_PATH . '/../vendor/autoload.php';
 
-$loader = new Loader();
-
-include ROOT_PATH . '/../app/config/config.testing.php';
+$loader = new Loader();;
 
 $loader->register();
 
 $di = new FactoryDefault();
+$di->setShared('config', include ROOT_PATH . '/../app/config/config.testing.php');
+$di->set('db', function () {
+    $config = $this->getConfig();
+
+    $class = 'Phalcon\Db\Adapter\Pdo\\' . $config->database->adapter;
+    $params = [
+        'host'     => $config->database->host,
+        'username' => $config->database->username,
+        'password' => $config->database->password,
+        'dbname'   => $config->database->dbname,
+        'charset'  => $config->database->charset
+    ];
+
+    if ($config->database->adapter == 'Postgresql') {
+        unset($params['charset']);
+    }
+
+    if (strtolower($config->database->adapter) === 'sqlite') {
+        $params = ['dbname' => $config->database->dbname];
+    }
+
+    /**
+     * @var \Phalcon\Db\AdapterInterface $connection
+     */
+    $connection = new $class($params);
+
+    return $connection;
+});
 
 Di::reset();
 

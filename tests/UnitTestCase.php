@@ -2,11 +2,16 @@
 
 namespace app\test;
 
-use Phalcon\Test\UnitTestCase as PhalconTestCase;
+use Phalcon\Di\DiInterface;
+use Phalcon\Di\InjectionAwareInterface;
+use Phalcon\Test\Traits\UnitTestCase as UnitTestCaseTrait;
 use PHPUnit\Framework\IncompleteTestError;
+use PHPUnit\Framework\TestCase;
 
-abstract class UnitTestCase extends PhalconTestCase
+abstract class UnitTestCase extends TestCase implements InjectionAwareInterface
 {
+    use UnitTestCaseTrait;
+
     /**
      * @var bool
      */
@@ -15,6 +20,8 @@ abstract class UnitTestCase extends PhalconTestCase
     public function setUp(): void
     {
         parent::setUp();
+
+        $this->setUpPhalcon();
 
         global $di;
 
@@ -25,6 +32,12 @@ abstract class UnitTestCase extends PhalconTestCase
         $this->setDi($di);
 
         $this->_loaded = true;
+    }
+
+    public function tearDown(): void
+    {
+        parent::tearDown();
+        $this->tearDownPhalcon();
     }
 
     /**
@@ -41,5 +54,32 @@ abstract class UnitTestCase extends PhalconTestCase
                 'Please run parent::setUp().'
             );
         }
+    }
+
+    /**
+     * Sets the Dependency Injector.
+     *
+     * @see    Injectable::setDI
+     * @param  DiInterface $di
+     * @return $this
+     */
+    public function setDI(DiInterface $di): void
+    {
+        $this->di = $di;
+    }
+
+    /**
+     * Returns the internal Dependency Injector.
+     *
+     * @see    Injectable::getDI
+     * @return DiInterface
+     */
+    public function getDI(): DiInterface
+    {
+        if (!$this->di instanceof DiInterface) {
+            return Di::getDefault();
+        }
+
+        return $this->di;
     }
 }
